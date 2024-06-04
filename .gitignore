@@ -1,0 +1,6 @@
+
+*.asset
+*.meta
+*.prefab
+*.fbx
+*.physicMaterial
