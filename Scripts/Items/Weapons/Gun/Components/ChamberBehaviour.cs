@@ -11,6 +11,11 @@ public class ChamberBehaviour : GunComponentBehaviour<Chamber>
         DisplayCartridge();
     }
 
+    public override void Initialize()
+    {
+        
+    }
+
     private void DisplayCartridge()
     {
         if (Cartridge == null || CartridgeLocation == null) return;

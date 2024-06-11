@@ -4,7 +4,6 @@ public class ItemBehaviour : AbstractItemBehaviour<Item>, IDroppable, IPickupabl
 {
     protected virtual void Start()
     {
-        Initialize();
         if (IsServer)
         {
 

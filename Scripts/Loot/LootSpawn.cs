@@ -10,11 +10,12 @@ public abstract class LootSpawn : MonoBehaviour
 
     public abstract void GenerateLoot();
 
-    protected float GetTerrainHeightAtPosition(Vector3 position)
+    protected float GetTerrainHeightAtPosition(Vector3 position, params string[] layerName) => GetTerrainHeightAtPosition(position, LayerMask.GetMask(layerName));
+    protected float GetTerrainHeightAtPosition(Vector3 position, int layerMask)
     {
         // Raycast downwards from a high point to find the terrain
         Ray ray = new Ray(position + (Vector3.up * 20f), Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, 50f, LayerMask.GetMask("Environment", "Terrain")))
+        if (Physics.Raycast(ray, out RaycastHit hit, 50f, layerMask))
         {
             Debug.Log($"Raycast hit {hit.collider.gameObject.name} at {hit.point}");
             return hit.point.y;

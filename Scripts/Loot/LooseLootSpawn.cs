@@ -1,13 +1,16 @@
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class LooseLootSpawn : LootSpawn
 {
+    [field: SerializeField] public LayerMask CollisionLayers { get; private set; }
     public override void GenerateLoot()
     {
         Vector3 spawnPos = GetRandomPointInBounds(Collider.bounds);
         LootItem lootItem = Pool.GetLootItem();
-        float terrainY = GetTerrainHeightAtPosition(spawnPos);
+        string[] layerNames = new string[CollisionLayers];
+        float terrainY = GetTerrainHeightAtPosition(spawnPos, layerNames);
         float adjustedY = terrainY + (lootItem.Item.Prefab.transform.localScale.z * lootItem.Scale / 2);
         Debug.Log($"Got spawnPos({spawnPos}) terrainY({terrainY}) adjustedY({adjustedY})");
         //Debug.Log("Spawning " + lootItem.Item.Name);
