@@ -1,6 +1,6 @@
 public class IdleState : CharacterState
 {
-    public IdleState(CharacterController controller) : base(controller) 
+    public IdleState(CharController controller) : base(controller) 
     {
     }
 

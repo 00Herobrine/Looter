@@ -8,6 +8,12 @@ public class ChamberBehaviour : GunComponentBehaviour<Chamber>
 
     private void Awake()
     {
+        DisplayCartridge();
+    }
+
+    private void DisplayCartridge()
+    {
+        if (Cartridge == null || CartridgeLocation == null) return;
         Instantiate(Cartridge, transform.position, Rotation, CartridgeLocation);
     }
 }

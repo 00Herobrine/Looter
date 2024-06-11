@@ -5,7 +5,7 @@ public abstract class CharacterState
     bool isComplete;
     float startTime;
 
-    protected CharacterController controller;
+    protected CharController controller;
     protected Vector2 moveInput;
     protected Vector2 lookInput;
 
@@ -21,7 +21,7 @@ public abstract class CharacterState
     void SetSuperState() { }
     void SetSubState() { }
 
-    public CharacterState(CharacterController controller)
+    public CharacterState(CharController controller)
     {
         this.controller = controller;
         startTime = Time.time;

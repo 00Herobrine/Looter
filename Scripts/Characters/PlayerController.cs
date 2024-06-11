@@ -2,12 +2,12 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : CharacterController
+public class PlayerController : CharController
 {
     [field: Header("Player Refs")]
+    [field: SerializeField] public Transform camTransform { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera Camera { get; private set; }
     [field: SerializeField] public AudioListener AudioListener { get; private set; }
-    [field: SerializeField] public PlayerInput PlayerInput { get; private set; }
 
     [field: Header("Player Settings")]
     [field: SerializeField] public Vector2 LookSens { get; private set; } = Vector2.one;
@@ -25,6 +25,7 @@ public class PlayerController : CharacterController
     public override void OnNetworkSpawn()
     {
         DetermineOwnership();
+        base.OnNetworkSpawn();
     }
     private void DetermineOwnership()
     {
@@ -80,7 +81,7 @@ public class PlayerController : CharacterController
 
     private void HandleMovementInput()
     {
-        movement = (transform.forward * moveInput.x) + transform.right * moveInput.y * (MovementData.WalkSpeed * Time.deltaTime);
+        Movement = moveInput.x * transform.right + moveInput.y * transform.forward;
     }
 
     private void HandleLookInput()
@@ -88,5 +89,14 @@ public class PlayerController : CharacterController
         yRotation += lookInput.x * LookSens.x * MovementData.RotationSpeed;
         xRotation -= lookInput.y * LookSens.y * MovementData.RotationSpeed;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
+        //RotateCamera(yRotation);
+    }
+
+    private void RotateCamera(float lookInputY)
+    {
+        float camAngle = Vector3.SignedAngle(transform.forward, camTransform.forward, camTransform.right);
+        float camRotateAmount = lookInputY * Time.deltaTime;
+        float newCamAngle = camAngle - camRotateAmount;
+        //if(newCamAngle < )
     }
 }

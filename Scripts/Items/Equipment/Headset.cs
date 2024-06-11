@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Equipment/New Headset")]
-public class Headset : EquipmentItem
+public class Headset : Equipment
 {
     [field: SerializeField] public CellBlock FoldedShape { get; private set; }
     [field: Header("Headset Info")]

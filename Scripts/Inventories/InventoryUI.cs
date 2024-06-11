@@ -1,8 +1,19 @@
+using AYellowpaper.SerializedCollections;
+using TMPro;
 using UnityEngine;
 
-public class InventoryUI : SingletonBehavior<InventoryUI>
+public class InventoryUI : MonoBehaviour
 {
-    [field: SerializeField] public PlayerController Player { get; private set; }
-    [field: SerializeField] public Texture2D CellIcon { get; private set; }
-    [field: SerializeField] public Texture2D SelectedCellIcon { get; private set; }
+    [field: SerializeField] public SerializedDictionary<string, TextMeshProUGUI> Texts { get; private set; }
+    Inventory Inventory;
+
+    private void Start()
+    {
+        
+    }
+    public void UpdateText(string key, string value)
+    {
+        if (Texts.TryGetValue(key, out TextMeshProUGUI text))
+            text.text = value;
+    }
 }

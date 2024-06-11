@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Equipment/Armored Rig")]
-public class ArmoredRig : EquipmentItem
+public class ArmoredRig : Equipment
 {
     [field: SerializeField] public Dictionary<ArmorRegion, ArmorPlate> ArmorRegions { get; private set; } 
     public ArmoredRig() : base(EquipmentType.Armored_Rig)

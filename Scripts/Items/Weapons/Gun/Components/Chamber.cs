@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Items/Components/New Chamber")]
 public class Chamber : GunComponent
 {
     [field: Header("Chamber Data")]

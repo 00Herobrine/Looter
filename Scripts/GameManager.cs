@@ -1,35 +1,30 @@
-using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : SingletonBehavior<GameManager>
 {
     [field: Header("Player Settings")]
     [field: SerializeField] public Color FriendlyColor { get; private set; } = Color.blue;
     [field: SerializeField] public Color EnemyColor { get; private set;} = Color.red;
-    [field: SerializeField] public LootPool[] LootPools { get; private set; }
-    private void Start()
+    [field: SerializeField] public LootSpawn[] LootSpawns { get; private set; }
+
+    protected override void Awake()
     {
-        
+        //NetworkManager.Singleton.OnClientConnectedCallback
+        base.Awake();
+        GenerateLoot();
     }
 
-    public void GenerateLoot() // Make this a job
+    private void Update()
     {
-
+        if(InputSystem.actions.FindAction("Jump").triggered) GenerateLoot();
     }
-    /*    [ServerRpc]
-        protected void RequestMoveServerRpc(Vector3 movement, Vector2 look, ServerRpcParams rpcParams = default)
+
+    private void GenerateLoot()
+    {
+        foreach(LootSpawn lootSpawn in LootSpawns)
         {
-            HandleMovement(movement);
-            HandleLook(look);
-        }*/
-    public static void Move(CharacterController character)
-    {
-        Vector3 movement = character.movement.normalized * (character.MovementData.WalkSpeed * character.moveSpeed);
-        if (!character.IsGrounded) movement *= character.MovementData.AirSpeedMod;
-        character.Rigidbody.AddForce(movement, ForceMode.Acceleration);
-    }
-    public static void SpawnItem(Item itemData, Vector3 position)
-    {
-        Instantiate(itemData.Prefab, position, Quaternion.identity);
+            lootSpawn.GenerateLoot();
+        }
     }
 }

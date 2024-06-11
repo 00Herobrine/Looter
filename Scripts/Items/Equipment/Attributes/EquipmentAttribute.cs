@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EquipmentAttribute : ScriptableObject
+public class EquipmentAttribute : AbstractAttribute
 {
 
 }

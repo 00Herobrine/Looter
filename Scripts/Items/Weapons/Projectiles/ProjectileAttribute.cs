@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class ProjectileAttribute : ScriptableObject, IProjectileAttribute
+public abstract class ProjectileAttribute : AbstractAttribute, IProjectileAttribute
 {
     [field: Header("Projectile Attribute")]
     [field: SerializeField] public string attributeName { get; private set; }
