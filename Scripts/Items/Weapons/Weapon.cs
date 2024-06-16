@@ -1,15 +1,22 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public abstract class Weapon<T> : Item where T : Weapon<T>
+public abstract class Weapon<T> : AbstractItem<T> where T : WeaponData
 {
-    [field: Header("Weapon Info")]
-    [field: SerializeField] public WeaponType WeaponType { get; private set; }
-    public Weapon(WeaponType weaponType) : base(ItemType.Weapon)
+    public bool CanAttack => Time.time - ItemData.LastAttack > ItemData.Cooldown;
+
+    protected virtual void Attack()
     {
-        WeaponType = weaponType;
+        if (IsServer)
+        {
+           ItemData.LastAttack = Time.time;
+        }
     }
-    public Weapon(Weapon<T> weaponData) : base(ItemType.Weapon)
+
+    [ServerRpc]
+    protected void UpdateLastAttackServerRpc()
     {
-        WeaponType = weaponData.WeaponType;
+        if (!IsServer) return;
+        //ItemData.LastAttack = Time.time;
     }
 }

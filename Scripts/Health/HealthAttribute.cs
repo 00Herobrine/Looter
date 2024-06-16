@@ -1,4 +1,4 @@
-public abstract class HealthAttribute : AbstractAttribute
+public abstract class HealthAttribute : AttributeDefinition
 {
 
 }

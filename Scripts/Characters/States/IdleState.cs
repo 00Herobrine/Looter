@@ -1,8 +1,5 @@
-public class IdleState : CharacterState
+public class IdleState : State
 {
-    public IdleState(CharController controller) : base(controller) 
-    {
-    }
 
     public override void CheckSwitchStates()
     {

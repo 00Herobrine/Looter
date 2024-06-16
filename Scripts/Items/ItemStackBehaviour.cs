@@ -1,4 +1,4 @@
-public class ItemStackBehaviour : AbstractItemStackBehaviour<ItemStack>
+public class ItemStackBehaviour : AbstractItemStackBehaviour<ItemStackData>
 {
 
 }

@@ -1,4 +1,4 @@
-public class RigBehaviour<T> : AbstractItemBehaviour<ArmoredRig>
+public class RigBehaviour<T> : AbstractItemBehaviour<ArmoredRigData>
 {
 
 }

@@ -4,3 +4,8 @@ public abstract class AbstractResource<T> : AbstractItemBehaviour<T> where T : R
 {
 
 }
+
+public class ResourceData : ItemData
+{
+
+}

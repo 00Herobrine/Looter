@@ -1,4 +1,4 @@
-public interface IDamageable : IHealth
+public interface IDamageable
 {
     void Damage(float amount);
     //void Kill();

@@ -26,10 +26,11 @@ public class LootPool : ScriptableObject
 public struct LootItem
 {
     [field: SerializeField] public MinMax ItemsCount { get; private set; }
-    [field: SerializeField] public Item Item { get; private set; }
+    [field: SerializeField] public ItemObject Item { get; private set; }
     [field: SerializeField] public float Scale { get; private set; }
     [field: SerializeField] public Vector3 Rotation { get; private set; }
     [field: SerializeField] public int Weight { get; private set; }
+    [field: SerializeField] public string PoolName { get; private set; }
 }
 
 [Serializable]

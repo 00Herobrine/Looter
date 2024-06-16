@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/New Key")]
-public class KeyItem : Item, IUsable<KeyItem>, IHurtable<int>
+public class KeyItem : ItemObject, IUsable<KeyItem>, IHurtable<int>
 {
     [field: Header("Key Info")]
     [field: SerializeField] public int HP { get; private set; }

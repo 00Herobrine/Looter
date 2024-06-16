@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class FistBehaviour : WeaponBehaviour<FistData>
+public class Fist : Weapon<WeaponData>
 {
-
+    //public class Fist() : base(WeaponType.MELEE) { }
+    public override void Use()
+    {
+        throw new System.NotImplementedException();
+    }
 }
 
-[CreateAssetMenu(menuName = "Items/Weapons/New Fist")]
-public class FistData : Weapon<FistData>
+public class FistDefinition : WeaponDefinition
 {
-    public FistData() : base(WeaponType.MELEE) { }
+    public FistDefinition() : base(WeaponType.MELEE) { }
 }

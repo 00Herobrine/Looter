@@ -1,9 +1,15 @@
-public class KeyBehaviour : AbstractItemBehaviour<KeyItem>
+public class KeyBehaviour : AbstractItemBehaviour<KeyData>
 {
     public void UseItem()
     {
         if (ItemData == null) return;
-        ItemData.Use();
+        ItemData.Uses--;
+        //ItemData.Use();
         //if (ItemData.HP <= 0) DestroyItem();
     }
+}
+
+public class KeyData : ItemData
+{
+    public int Uses { get; set; }
 }

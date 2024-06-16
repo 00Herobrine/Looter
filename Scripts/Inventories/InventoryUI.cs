@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     [field: SerializeField] public SerializedDictionary<string, TextMeshProUGUI> Texts { get; private set; }
-    Inventory Inventory;
+    InventoryData Inventory;
 
     private void Start()
     {

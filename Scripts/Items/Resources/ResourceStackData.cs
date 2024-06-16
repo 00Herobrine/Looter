@@ -1,4 +1,4 @@
-public class ResourceStackData : ItemStack
+public class ResourceStackData : ItemStackDefinition
 {
     public ResourceStackData() : base(ItemType.Resource) { }
 }

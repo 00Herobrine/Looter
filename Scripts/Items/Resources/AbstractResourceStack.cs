@@ -1,4 +1,4 @@
-public abstract class AbstractResourceStack<T> : BaseItemStack where T : ResourceStackData
+public abstract class AbstractResourceStack<T> : ItemStackDefinition where T : ResourceStackData
 {
     public AbstractResourceStack() : base(ItemType.Resource) {}
 }

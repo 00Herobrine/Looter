@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class AbstractItemBehaviour<T> : NetworkBehaviour where T : BaseItem
+public abstract class AbstractItemBehaviour<T> : NetworkBehaviour where T : ItemData
 {
     [field: SerializeField] public T ItemData { get; private set; }
 
@@ -23,7 +23,7 @@ public class AbstractItemBehaviour<T> : NetworkBehaviour where T : BaseItem
 }
 
 
-public class AbstractItemStackBehaviour<T> : AbstractItemBehaviour<T> where T : BaseItemStack
+public abstract class AbstractItemStackBehaviour<T> : AbstractItemBehaviour<T> where T : ItemStackData
 {
 
 }

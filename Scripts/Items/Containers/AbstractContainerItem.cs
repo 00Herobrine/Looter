@@ -1,4 +1,4 @@
-public abstract class AbstractContainerItem<T> : AbstractItemBehaviour<T> where T : BaseItem
+public abstract class AbstractContainerItem<T> : AbstractItemBehaviour<T> where T : ItemData
 {
     public AbstractContainerItem() { }
 }

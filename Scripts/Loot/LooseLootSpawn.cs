@@ -1,11 +1,14 @@
 using System.Linq;
+using Unity.Netcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class LooseLootSpawn : LootSpawn
 {
     [field: SerializeField] public LayerMask CollisionLayers { get; private set; }
-    public override void GenerateLoot()
+
+    [ServerRpc]
+    public override void GenerateLootServerRpc()
     {
         Vector3 spawnPos = GetRandomPointInBounds(Collider.bounds);
         LootItem lootItem = Pool.GetLootItem();
