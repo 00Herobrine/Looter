@@ -9,7 +9,7 @@ public class ContainerDisplay : MonoBehaviour
     [field: SerializeField] public GameObject ItemSlotPrefab { get; private set; }
     //[field: SerializeField] public Container Container { get; private set; } = null;
     [field: SerializeField] public ItemSlot[] Slots { get; private set; }
-    [field: SerializeField] public ItemObject TestItem { get; private set; }
+    [field: SerializeField] public ItemDefinition TestItem { get; private set; }
     [field: SerializeField] public int Columns { get; private set; }
     [field: SerializeField] public int Rows { get; private set; }
     private RectTransform rectTransform;

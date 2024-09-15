@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BarrelBehaviour : GunComponentBehaviour<BarrelData>, IDamageable, IHealable, IHeatable
+public class BarrelBehaviour : AbstractComponentBehaviour<BarrelData>, IDamageable, IHealable, IHeatable
 {
     public float Health { get; private set; }
     public float MaxHealth { get; private set; }

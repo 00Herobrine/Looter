@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIManager : SingletonBehavior<UIManager>
+public class UIManager : SingletonBehaviour<UIManager>
 {
     // Start is called before the first frame update
     void Start()

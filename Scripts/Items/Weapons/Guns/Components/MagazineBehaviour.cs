@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MagazineBehaviour : GunComponentBehaviour<MagazineData>
+public class MagazineBehaviour : AbstractComponentBehaviour<MagazineData>
 {
     [field: SerializeField] public Transform[] CartridgeLocations { get; private set; }
     public override void Initialize()

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/New Item")]
 public class ItemDefinition : ScriptableObject, IItemDefinition
 {
-    [field: Header("Base Item Info")]
+    [field: Header("Item Definition")]
     [field: SerializeField] public string UUID { get; protected set; } = Guid.NewGuid().ToString();
     [field: SerializeField] public ItemType Type { get; protected set; }
     [field: SerializeField] public string Name { get; protected set; }
@@ -15,10 +15,25 @@ public class ItemDefinition : ScriptableObject, IItemDefinition
     [field: SerializeField] public GameObject Prefab { get; protected set; }
     [field: SerializeField] public float Radius { get; protected set; }
     [field: SerializeField] public CellBlock Shape { get; protected set; }
+    public int Width => Shape.Width;
+    public int Height => Shape.Height;
     public ItemDefinition(ItemType type)
     { 
         Type = type;
     }
+}
+
+public interface IItemData
+{
+    string UUID { get; }
+    string GUID { get; }
+    string OwnerID { get; }
+}
+
+public class FoldableItem : ItemDefinition
+{
+    [field: SerializeField] public CellBlock FoldedShape { get; protected set; }
+    public FoldableItem(ItemType itemType) : base(itemType) { }
 }
 
 /*[Serializable]

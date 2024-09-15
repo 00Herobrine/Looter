@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class VehicleWeapon : Weapon<VehicleWeaponData>
+public abstract class VehicleWeapon : AbstractWeaponBehaviour<VehicleWeaponData>
 {
     [field: Header("Weapon Refs")]
     [field: SerializeField] public VehicleWeaponDefintion Definition { get; private set; }

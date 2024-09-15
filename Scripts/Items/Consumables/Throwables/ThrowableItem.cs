@@ -1,4 +1,4 @@
-public abstract class ThrowableItem : ItemObject
+public abstract class ThrowableItem : ItemDefinition
 {
     public ThrowableItem(ItemType type) : base(type)
     {

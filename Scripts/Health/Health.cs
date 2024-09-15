@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [field: SerializeField] public CharacterHealthData HealthData { get; private set; }
+    [field: SerializeField] public HealthData HealthData { get; private set; }
     [field: SerializeField] public Limb[] Limbs { get; private set; }
     public float Total;
     public float MaxHealth { get; private set; }
@@ -32,6 +32,6 @@ public class Health : MonoBehaviour
 
 public struct HealthChangedEventArgs
 {
-    public CharacterHealthData OldHealth { get; }
-    public CharacterHealthData NewHealth { get; }
+    public HealthData OldHealth { get; }
+    public HealthData NewHealth { get; }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class AmmoDefinition : ScriptableObject
 {
     public const string AmmoLabel = "Ammunition";
-    [field: SerializeField] public CartridgeDefintion Cartridge { get; private set; }
+    [field: SerializeField] public CartridgeDefinition Cartridge { get; private set; }
     [field: SerializeField] public ProjectileDefinition Projectile { get; private set; }
     [field: SerializeField] public GunpowderDefinition Gunpowder { get; private set; }
     [field: SerializeField] public float PowderLoad { get; private set; }

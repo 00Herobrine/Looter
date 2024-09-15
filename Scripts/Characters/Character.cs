@@ -23,13 +23,13 @@ public class Character : NetworkBehaviour
     protected float yRotation;
     protected float xRotation;
 
-    private void Start()
-    {
-    }
 
-    private void OnEnable()
+    private void FixedUpdate()
     {
-
+        GroundCheck();
+        HandleMovement();
+        HandleLook();
+        ControlDrag();
     }
 
     public override void OnNetworkSpawn()
@@ -64,13 +64,6 @@ public class Character : NetworkBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        GroundCheck();
-        HandleMovement();
-        HandleLook();
-        ControlDrag();
-    }
 
     private void HandleMovement()
     {
@@ -100,26 +93,25 @@ public class Character : NetworkBehaviour
         }
     }
 
-
     #region Inventory/Item Functions
-    protected List<ItemObject> GetNearbyItems()
+    protected List<ItemDefinition> GetNearbyItems()
     {
         //Gizmos.DrawWireSphere(transform.position, LootSphereRadius);
-        List<ItemObject> items = new();
+        List<ItemDefinition> items = new();
         if (Physics.SphereCast(transform.position, GameManager.Instance.LootSphereRadius, Vector3.zero, out RaycastHit hit))
         {
-            if (hit.collider.TryGetComponent(out ItemObject item))
+            if (hit.collider.TryGetComponent(out ItemDefinition item))
             {
                 items.Add(item);
             }
         }
         return items;
     }
-    public void AddItem(ItemObject item)
+    public void AddItem(ItemDefinition item)
     {
         //Inventory.AddItem(item);
     }
-    public void RemoveItem(ItemObject item)
+    public void RemoveItem(ItemDefinition item)
     {
 
     }
@@ -153,13 +145,13 @@ public class Character : NetworkBehaviour
         Rigidbody.drag = drag;
     }
 
-    protected void EquipItem<T>(T itemData) where T : ItemObject
+    protected void EquipItem<T>(T itemData) where T : ItemDefinition
     {
 
     }
 
-    public void QuickAddItem<T>(T itemData) where T : ItemObject => AddItem(itemData, 0, 0);
-    public void AddItem<T>(T itemData, int x, int y) where T : ItemObject
+    public void QuickAddItem<T>(T itemData) where T : ItemDefinition => AddItem(itemData, 0, 0);
+    public void AddItem<T>(T itemData, int x, int y) where T : ItemDefinition
     {
         //Inventory.SetItem(x, y, itemData);
     }

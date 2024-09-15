@@ -1,4 +1,4 @@
-public interface IChamber : ICaliber, IAbstractChamber<CartridgeDefintion>
+public interface IChamber : ICaliber, IAbstractChamber<CartridgeDefinition>
 {
 
 }

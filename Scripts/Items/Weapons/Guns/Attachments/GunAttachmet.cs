@@ -1,6 +1,18 @@
-public class GunAttachment : ItemObject
+using System.Diagnostics;
+
+public abstract class AttachmentDefinition : ItemDefinition, IAttachable
 {
-    public GunAttachment() : base(ItemType.Attachment) { }
+    public AttachmentDefinition() : base(ItemType.Attachment) { }
+
+    public void Attach(GunController gunController)
+    {
+        Debug.WriteLine($"Attached ${Name} to {gunController.Definition.Name}");
+    }
+}
+
+public interface IAttachable
+{
+    public abstract void Attach(GunController gunController);
 }
 
 public struct ConnectionPoint
@@ -16,9 +28,4 @@ public enum ConnectionType
 public enum MountType
 {
     DoveTail,
-}
-
-public enum RailType
-{
-    Picatinny, Weaver, Keymod, MLOK
 }

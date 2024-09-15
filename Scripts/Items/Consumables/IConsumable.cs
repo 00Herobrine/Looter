@@ -1,8 +1,8 @@
 using UnityEngine.Events;
 
-public interface IConsumable : IUsable<ItemObject>
+public interface IConsumable : IUsable<ItemDefinition>
 {
-    UnityEvent<ItemObject> ConsumedEvent { get; }
+    UnityEvent<ItemDefinition> ConsumedEvent { get; }
     float ConsumeTime { get; }
     virtual void Consumed() { }
 }

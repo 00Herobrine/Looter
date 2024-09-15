@@ -1,4 +1,4 @@
-public class Lower : GunComponentBehaviour<LowerData>
+public class Lower : AbstractComponentBehaviour<LowerData>
 {
 
 }

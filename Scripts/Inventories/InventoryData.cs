@@ -6,7 +6,7 @@ public class InventoryData : ScriptableObject
 {
     ContainerDefinition container;
 
-    public void AddItem(ItemObject item)
+    public void AddItem(ItemDefinition item)
     {
 
     }
@@ -14,10 +14,10 @@ public class InventoryData : ScriptableObject
     {
 
     }
-    public void RemoveItem(ItemObject item) { }
+    public void RemoveItem(ItemDefinition item) { }
 
-    public void SetItem(ItemObject item, int x, int y) => SetItem(item, new(x, y));
-    public void SetItem(ItemObject item, Vector2Int position)
+    public void SetItem(ItemDefinition item, int x, int y) => SetItem(item, new(x, y));
+    public void SetItem(ItemDefinition item, Vector2Int position)
     {
 
     }

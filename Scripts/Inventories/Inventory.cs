@@ -11,16 +11,16 @@ public class Inventory
         Contents = new InventorySlot[columns, rows];
     }
 
-    public void SetItem<T>(int x, int y, T item) where T : ItemObject
+    public void SetItem<T>(int x, int y, T item) where T : ItemDefinition
     {
         SetItem(new(x, y), item);
     }
-    public void SetItem<T>(Vector2Int pos, T item) where T : ItemObject
+    public void SetItem<T>(Vector2Int pos, T item) where T : ItemDefinition
     {
         Contents[pos.x, pos.y].SetItem(item);
     }
 
-    public T GetItem<T>(int x, int y) where T : Item
+    public T GetItem<T>(int x, int y) where T : ItemBehaviour
     {
         return null;
     }
@@ -28,10 +28,10 @@ public class Inventory
 
 public class InventorySlot
 {
-    public ItemObject _item { get; private set; }
+    public ItemDefinition _item { get; private set; }
     public ItemType[] BlacklistedTypes { get; private set; }
     public string[] BlacklistedIDs { get; private set; }
-    public ItemObject Item { 
+    public ItemDefinition Item { 
         get => _item;
         set 
         { 
@@ -39,7 +39,7 @@ public class InventorySlot
             _item = value;
         }
     }
-    public bool IsBlacklisted(ItemObject item) => IsBlacklisted(item.Type) || IsBlacklisted(item.UUID);
+    public bool IsBlacklisted(ItemDefinition item) => IsBlacklisted(item.Type) || IsBlacklisted(item.UUID);
     public bool IsBlacklisted(string itemGUID)
     {
         foreach(string id in BlacklistedIDs)
@@ -51,9 +51,9 @@ public class InventorySlot
             if (type == itemType) return true;
         return false;
     }
-    public void SetItem<T>(T item) where T : ItemObject
+    public void SetItem<T>(T item) where T : ItemDefinition
     {
         Item = item;
     }
-    public T GetItem<T>() where T : ItemObject => _item as T;
+    public T GetItem<T>() where T : ItemDefinition => _item as T;
 }

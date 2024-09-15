@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public abstract class WeaponDefinition : ItemDefinition, IWeapon
+public abstract class WeaponDefinition : ItemDefinition
 {
-    [field: Header("Weapon Info")]
+    [field: Header("Weapon Definition")]
     [field: SerializeField] public WeaponType WeaponType { get; protected set; }
-    [field: SerializeField] public double LastAttack { get; protected set; }
-    [field: SerializeField] public float Cooldown { get; protected set; }
+    [field: SerializeField] public float AttackRate { get; protected set; }
+
     public WeaponDefinition(WeaponType weaponType) : base(ItemType.Weapon)
     {
         WeaponType = weaponType;
@@ -14,14 +14,14 @@ public abstract class WeaponDefinition : ItemDefinition, IWeapon
 }
 
 [Serializable]
-public class WeaponData : ItemData, IWeapon
+public class WeaponData : ItemData, IWeaponData
 {
-    public WeaponType WeaponType { get; set; }
-    public double LastAttack { get; set; }
-    public float Cooldown { get; set; }
+    [field: SerializeField] public WeaponType WeaponType { get; set; }
+    [field: SerializeField] public double LastAttack { get; set; }
+    [field: SerializeField] public float Cooldown { get; set; }
 }
 
-public interface IWeapon
+public interface IWeaponData : IItemData
 {
     WeaponType WeaponType { get; }
     double LastAttack { get; }

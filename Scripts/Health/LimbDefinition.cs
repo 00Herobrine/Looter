@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = DefinitionCategories.Health + "/Limb")]
+[CreateAssetMenu(menuName = "Health/Limb")]
 public class LimbDefinition : ScriptableObject, ILimbData
 {
     [field: SerializeField] public string Name { get; private set; }

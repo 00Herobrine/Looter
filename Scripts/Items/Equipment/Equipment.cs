@@ -9,7 +9,7 @@ public enum EquipmentType
     Plate_Carrier,
     Plate,
 }
-public abstract class Equipment : ItemObject
+public abstract class Equipment : ItemDefinition
 {
     [field: Header("Equipment Info")]
     [field: SerializeField] public EquipmentType EquipmentType { get; private set; }

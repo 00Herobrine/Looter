@@ -25,9 +25,6 @@ public struct Caliber
         Height = (float)heightMM;
         Unit = UnitSystem.Metric;
     }
-}
 
-public static class CaliberExtensions
-{
-    public static bool IsCompatible(this Caliber _caliber, Caliber Caliber) => _caliber.Diameter <= Caliber.Diameter;
+    public readonly bool IsCompatible(Caliber caliber) => Diameter <= caliber.Diameter;
 }

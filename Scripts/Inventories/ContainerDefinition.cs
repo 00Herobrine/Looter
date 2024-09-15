@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-[CreateAssetMenu(menuName = DefinitionCategories.Inventory + "/Container")]
+[CreateAssetMenu(menuName = "Inventory/Container")]
 public class ContainerDefinition : ScriptableObject
 {
     [field: Header("Container Info")]
@@ -13,20 +13,20 @@ public class ContainerDefinition : ScriptableObject
     public int Rows { get; private set; }
     public event Action ItemAddedCallback;
 
-    public ContainerDefinition(int columns, int rows)
+/*    public ContainerDefinition(int columns, int rows)
     {
         Size = new(columns, rows);
         Contents = new ItemSlot[columns, rows];
         Columns = columns;
         Rows = rows;
-    }
+    }*/
 
-    public bool AddItem<T>(T Item) where T : ItemObject
+    public bool AddItem<T>(T Item) where T : ItemDefinition
     {
         return false;
     }
-    public bool SetItem<T>(T item, int x, int y) where T : ItemObject => SetItem(item, new(x, y));
-    public bool SetItem<T>(T item, Vector2Int pos) where T : ItemObject
+    public bool SetItem<T>(T item, int x, int y) where T : ItemDefinition => SetItem(item, new(x, y));
+    public bool SetItem<T>(T item, Vector2Int pos) where T : ItemDefinition
     {
         if (CanPlaceItem(item, pos)) return false;
         Contents[pos.x, pos.y].SetItem(item);
@@ -34,7 +34,7 @@ public class ContainerDefinition : ScriptableObject
         return true;
     }
 
-    private bool CanPlaceItem(ItemObject item, Vector2Int position)
+    private bool CanPlaceItem(ItemDefinition item, Vector2Int position)
     {
         for (int x = 0; x < item.Width; x++)
         {

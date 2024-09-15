@@ -6,9 +6,9 @@ using UnityEngine;
 public class AbilityEffectTracer : AbilityEffect
 {
     [Tooltip("Duration in Second(s) to Trace attached object")]
-    public float Duration = 0f;
-    public Color Color = Color.red;
-    public LineRenderer lineRenderer;
+    [field: SerializeField] public float Duration { get; private set; } = 0f;
+    [field: SerializeField] public Color Color { get; private set; } = Color.red;
+    [field: SerializeField] public LineRenderer lineRenderer { get; private set; }
 
     public override Task Apply(Character owner)
     {

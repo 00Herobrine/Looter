@@ -1,4 +1,4 @@
-public class GasTube : ComponentDefinition
+public class GasTube : GunComponentDefinition
 {
     public GasTube() : base(ComponentType.GasTube) { }
 }

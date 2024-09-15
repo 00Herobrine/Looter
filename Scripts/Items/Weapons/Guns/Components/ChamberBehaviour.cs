@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChamberBehaviour : GunComponentBehaviour<ChamberData>
+public class ChamberBehaviour : AbstractComponentBehaviour<ChamberData>
 {
     [field: Header("Chamber Refs")]
     [field: SerializeField] public Transform CartridgeLocation { get; private set; }
@@ -19,7 +19,7 @@ public class ChamberBehaviour : GunComponentBehaviour<ChamberData>
     private void DisplayCartridge()
     {
         if (ItemData.Cartridge == null || CartridgeLocation == null) return;
-        Instantiate(ItemData.Cartridge.ItemDefinition.Prefab, transform.position, Quaternion.Euler(Rotation), CartridgeLocation);
+        Instantiate(ItemData.Cartridge.Definition.Prefab, transform.position, Quaternion.Euler(Rotation), CartridgeLocation);
     }
 }
 

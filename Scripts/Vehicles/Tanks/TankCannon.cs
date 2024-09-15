@@ -4,7 +4,7 @@ using UnityEngine;
 public class TankCannon : VehicleWeapon, IChamber
 {
     [field: SerializeField] public Vector2 Caliber { get; private set; }
-    [field: SerializeField] public CartridgeDefintion Cartridge { get; private set; }
+    [field: SerializeField] public CartridgeDefinition Cartridge { get; private set; }
     //[field: SerializeField] public Transform CartridgeLocation { get; private set; }
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class TankCannon : VehicleWeapon, IChamber
         
     }
 
-    public override void Use()
+    public void Use()
     {
         AttemptShoot();
     }

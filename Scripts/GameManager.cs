@@ -1,7 +1,8 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : SingletonBehavior<GameManager>
+public class GameManager : NetworkSingletonBehavior<GameManager>
 {
     [field: Header("Player Settings")]
     [field: SerializeField] public Color FriendlyColor { get; private set; } = Color.blue;
@@ -26,6 +27,7 @@ public class GameManager : SingletonBehavior<GameManager>
 
     private void GenerateLoot()
     {
+        if (!IsServer) return;
         foreach(LootSpawn lootSpawn in LootSpawns)
         {
             lootSpawn.GenerateLootServerRpc();

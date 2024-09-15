@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Collider))]
-public class LootContainer : LootSpawn, IInteractable, IContainer<ItemObject[]>
+public class LootContainer : LootSpawn, IInteractable, IContainer<ItemDefinition[]>
 {
     [field: Header("Container Refs")]
     [field: SerializeField] public Animator Animator { get; private set; }
@@ -17,7 +17,7 @@ public class LootContainer : LootSpawn, IInteractable, IContainer<ItemObject[]>
     [field: SerializeField] public AnimationCurve SpeedRamp { get; private set; }
     [field: SerializeField] public MinMax Range { get; private set; }
     [field: SerializeField] public Vector2Int Size { get; private set; }
-    [field: SerializeField] public ItemObject[] Items { get; private set; }
+    [field: SerializeField] public ItemDefinition[] Items { get; private set; }
     [field: SerializeField] public bool Opened { get; private set; }
     [field: SerializeField] public bool IsLidMoving { get; private set; }
 
@@ -83,7 +83,7 @@ public class LootContainer : LootSpawn, IInteractable, IContainer<ItemObject[]>
     public override void GenerateLootServerRpc()
     {
         int items = Random.Range(Range.Min, Range.Max);
-        Items = new ItemObject[Size.x * Size.y];
+        Items = new ItemDefinition[Size.x * Size.y];
         for (int i = 0; i < items; i++)
         {
             LootItem lootItem = Pool.GetLootItem();

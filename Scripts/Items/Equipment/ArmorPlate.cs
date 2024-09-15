@@ -9,7 +9,7 @@ public enum Material
 }
 
 [CreateAssetMenu(menuName = "Items/Equipment/New Armor Plate")]
-public class ArmorPlate : ItemObject, IDamageable, IHealable
+public class ArmorPlate : ItemDefinition, IDamageable, IHealable
 {
     [field: Header("Armor Info")]
     [field: SerializeField] public Material Material { get; private set; }

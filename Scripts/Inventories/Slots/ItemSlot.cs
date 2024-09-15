@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class ItemSlot : AbstractItemSlot<ItemObject>
+public class ItemSlot : AbstractItemSlot<ItemDefinition>
 {
-    public ItemSlot(ItemObject item)
+    public ItemSlot(ItemDefinition item)
     {
         Item = item;
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Components/Barrel")]
-public class BarrelDefinition : ComponentDefinition
+public class BarrelDefinition : GunComponentDefinition
 {
     [field: Header("Barrel Info")]
     [field: SerializeField] public float Length { get; private set; }
